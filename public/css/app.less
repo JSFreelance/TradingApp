@@ -1,0 +1,110 @@
+@primary-size: 15px;
+@secodary-size: 25px;
+@third-size: 50px;
+@four-size: 150px;
+@img-size: 30px;
+
+@panel-color: #e6e6e6;
+
+table tr td button{
+  display: inline;
+  background-color: transparent;
+  border-color: transparent;
+  img{
+    width: @secodary-size;
+    height: @secodary-size;
+  }
+}
+
+.panel{
+  background-color: @panel-color;
+}
+
+tbody{
+  background-color: white;
+}
+
+.modal{
+  .modal-dialog{
+    .modal-content{
+      .modal-footer{
+        button.btn-default{
+          float: left;
+        }
+      }
+    }
+  }
+}
+
+.form-control{
+  width: @four-size;
+  display: inline;
+}
+
+.new-trade-label{
+  label{
+    display: inline;
+  }
+  .rate{
+    margin-left: 140px;
+    margin-right: 130px;
+  }
+}
+
+.currency-area{
+  select{
+    display: inline;
+  }
+  h4{
+    display: inline;
+    margin-left: 50px;
+    margin-right: 65px;
+  }
+
+  img{
+    width: @img-size;
+    margin-left: @img-size;
+    margin-right: @img-size;
+  }
+}
+
+.sell-currency{
+  margin-left: 24px;
+}
+
+.amount-label{
+  label{
+    display: inline;
+  }
+  .label-margin{
+    margin-left: 24px;
+    margin-right: 312px;
+  }
+}
+
+.amount-text-field{
+  //Disable spin form
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .text-margin{
+    margin-right: 233px
+  }
+}
+
+.modal-header{
+  p{
+    display: inline;
+  }
+  b{
+    display: inline;
+  }
+}
+
+.uib-pagination{
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 250px;
+}

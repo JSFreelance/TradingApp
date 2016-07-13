@@ -1,0 +1,71 @@
+table tr td button {
+  display: inline;
+  background-color: transparent;
+  border-color: transparent;
+}
+table tr td button img {
+  width: 25px;
+  height: 25px;
+}
+.panel {
+  background-color: #e6e6e6;
+}
+tbody {
+  background-color: white;
+}
+.modal .modal-dialog .modal-content .modal-footer button.btn-default {
+  float: left;
+}
+.form-control {
+  width: 150px;
+  display: inline;
+}
+.new-trade-label label {
+  display: inline;
+}
+.new-trade-label .rate {
+  margin-left: 140px;
+  margin-right: 130px;
+}
+.currency-area select {
+  display: inline;
+}
+.currency-area h4 {
+  display: inline;
+  margin-left: 50px;
+  margin-right: 65px;
+}
+.currency-area img {
+  width: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.sell-currency {
+  margin-left: 24px;
+}
+.amount-label label {
+  display: inline;
+}
+.amount-label .label-margin {
+  margin-left: 24px;
+  margin-right: 312px;
+}
+.amount-text-field input::-webkit-outer-spin-button,
+.amount-text-field input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.amount-text-field .text-margin {
+  margin-right: 233px;
+}
+.modal-header p {
+  display: inline;
+}
+.modal-header b {
+  display: inline;
+}
+.uib-pagination {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 250px;
+}
