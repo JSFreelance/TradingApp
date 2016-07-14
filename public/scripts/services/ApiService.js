@@ -15,7 +15,7 @@ angular.module('TradeApp').service('ApiService', ['$http', 'config', function($h
     };
 
     this.updateTrade = function (id, data) {
-        return this.httpPromise($http.put(config.trade_url+id), 'Trade not updated');
+        return this.httpPromise($http.put(config.trade_url+id, data), 'Trade not updated');
     };
 
     this.deleteTrade = function (id) {
@@ -26,8 +26,8 @@ angular.module('TradeApp').service('ApiService', ['$http', 'config', function($h
       return this.httpPromise($http.get(config.rate_provider_url), 'Currency set not found');
     };
 
-    this.getRate = function (initial_currency, target_currency) {
-        return this.httpPromise($http.get(config.rate_provider_url+'?symbols='+initial_currency+','+target_currency), 'Rate not found');
+    this.getRate = function (sellCurrency) {
+        return this.httpPromise($http.get(config.rate_provider_url+'?base='+sellCurrency), 'Rate not found');
     };
 
     this.getCurrency = function (id) {

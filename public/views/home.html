@@ -1,9 +1,9 @@
 
-<button ng-click="create_trade()" type="button" class="btn btn-primary pull-right">New Trade</button>
+<button ng-click="createTrade()" type="button" class="btn btn-primary pull-right">New Trade</button>
 <br>
 <br>
 
-<div id="createTrade" class="modal fade">
+<div id="createTradeForm" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -20,15 +20,18 @@
 
                 <div class="currency-area">
 
-
-                    <select class="form-control" ng-model="selectedCurrency" ng-options="currency for currency in currencies">
+                    <select class="form-control" ng-model="initialCurrency"
+                            ng-options="currency for currency in currencies"
+                            ng-change="updateRate()">
                     </select>
 
                     <img src="img/arrow-right.png">
-                    <label>1.2561</label>
+                    <label class="rate-label">{{ currentRate }}</label>
                     <img src="img/arrow-right.png">
 
-                    <select class="form-control" ng-model="targetCurrency" ng-options="currency for currency in currencies">
+                    <select class="form-control" ng-model="targetCurrency"
+                            ng-options="currency for currency in currencies"
+                            ng-change="updateRate()">
                     </select>
 
                 </div>
@@ -38,25 +41,26 @@
                     <label>Buy Amount</label>
                 </div>
                 <div class="amount-text-field">
-                    <input type="number" step="0.01" placeholder="Amount" class="form-control text-margin">
-                    <input type="number" step="0.01" class="form-control" readonly>
+                    <input type="number" step="0.01" placeholder="Amount" class="form-control text-margin"
+                           ng-model="sellAmount" ng-change="updateRate()">
+                    <input type="number" step="0.01" class="form-control"  ng-model="buyAmount" readonly>
                 </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Create</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="newTrade()">Create</button>
             </div>
         </div>
     </div>
 </div>
 
-<div id="editTrade" class="modal fade">
+<div id="editTradeForm" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <p class="modal-title">Editing Trade</p> <b>TR23123</b>
+                <p class="modal-title">Editing Trade</p> <b>{{editedTradeId}}</b>
             </div>
             <div class="modal-body">
 
@@ -67,12 +71,12 @@
                 </div>
 
                 <div class="currency-area">
-                    <h4>GBP</h4>
+                    <h4>{{savedSellCurrency}}</h4>
 
                     <img src="img/arrow-right.png">
-                    <label>1.2561</label>
+                    <label>{{savedRate}}</label>
                     <img src="img/arrow-right.png">
-                    <h4>USD</h4>
+                    <h4>{{savedBuyCurrency}}</h4>
                 </div>
 
                 <div class="amount-label">
@@ -80,24 +84,24 @@
                     <label>Buy Amount</label>
                 </div>
                 <div class="amount-text-field">
-                    <input type="number" step="0.01" placeholder="Amount" class="form-control text-margin">
-                    <input type="number" step="0.01" class="form-control" readonly>
+                    <input type="number" step="0.01" placeholder="Amount" class="form-control text-margin" ng-model="savedSellAmount">
+                    <input type="number" step="0.01" class="form-control" ng-model="savedBuyAmount" readonly>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Create</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveEditedTrade()">Save</button>
             </div>
         </div>
     </div>
 </div>
 
-<div id="deleteTrade" class="modal fade">
+<div id="deleteTradeForm" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <p class="modal-title">Deleting Trade</p> <b>TR23123</b>
+                <p class="modal-title">Deleting Trade</p> <b>{{tradeDeletedId}}</b>
             </div>
             <div class="modal-body">
                 <p>Are you sure you want to delete this trade?</p>
@@ -105,7 +109,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteTradeConfirm()">Delete</button>
             </div>
         </div>
     </div>
@@ -134,8 +138,8 @@
             <td>{{trade.rate}}</td>
             <td>{{trade.booking_date | date : "dd.MM.y HH:mm"}}</td>
             <td>
-                <button  ng-click="edit_trade()" ><img src="img/pencil.png"></button>
-                <button  ng-click="delete_trade()" ><img src="img/delete.png"></button>
+                <button  ng-click="editTrade(trade.id)"><img src="img/pencil.png"></button>
+                <button  ng-click="deleteTrade(trade.id)" ><img src="img/delete.png"></button>
             </td>
         </tr>
         </tbody>
