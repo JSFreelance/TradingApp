@@ -1,4 +1,4 @@
-//here are defined all application states
+//app config
 var routerApp = angular.module('TradeApp', ['ui.router','ui.bootstrap']);
 
 routerApp.run([
@@ -8,6 +8,7 @@ routerApp.run([
     }
 ]);
 
+//app states
 routerApp.config(function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider
@@ -18,10 +19,9 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('about', {
             url: '/about',
-            templateUrl: 'views/about.html',
-            controller: 'AboutCtrl'
+            templateUrl: 'views/about.html'
         });
-
+    
     $urlRouterProvider.otherwise('/home');
 
 });

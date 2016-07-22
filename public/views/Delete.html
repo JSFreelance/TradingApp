@@ -1,0 +1,13 @@
+<!--Display modal ui for delete trade-->
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <p class="modal-title">Deleting Trade</p> <b>{{tradeDeletedId}}</b>
+</div>
+<div class="modal-body">
+    <p>Are you sure you want to delete this trade?</p>
+    <p>This change can't be reversed</p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-danger" type="button" ng-click="ok()">OK</button>
+</div>

@@ -1,41 +1,49 @@
 
+//API Access layer it uses angular $http for share data from API
+
 angular.module('TradeApp').service('ApiService', ['$http', 'config', function($http, config) {
 
-    this.getTradeSet = function (currentPage) {
+    //Retrieve current page trade list
+    this.getTradeSet = function (currentPage, callback) {
         return this.httpPromise($http.get(config.trade_url +'?page='+currentPage),
-            'trade set not found');
+            'trade set not found', callback);
     };
 
-    this.getTrade = function (id) {
-        return this.httpPromise($http.get(config.trade_url+id), 'Trade not found');
+    //Retrieve a trade having id
+    this.getTrade = function (id, callback) {
+        return this.httpPromise($http.get(config.trade_url+id), 'Trade not found', callback);
     };
 
-    this.createTrade = function (data) {
-        return this.httpPromise($http.post(config.trade_url, data), 'Trade not created');
+    //create a trade data: json
+    this.createTrade = function (data, callback) {
+        return this.httpPromise($http.post(config.trade_url, data), 'Trade not created', callback);
     };
 
-    this.updateTrade = function (id, data) {
-        return this.httpPromise($http.put(config.trade_url+id, data), 'Trade not updated');
+    //update a trade data: json
+    this.updateTrade = function (id, data, callback) {
+        return this.httpPromise($http.put(config.trade_url+id+'/', data), 'Trade not updated', callback);
     };
 
-    this.deleteTrade = function (id) {
-        return this.httpPromise($http.delete(config.trade_url+id), 'Trade not deleted');
+    //delete trade
+    this.deleteTrade = function (id, callback) {
+        return this.httpPromise($http.delete(config.trade_url+id+'/'), 'Trade not deleted', callback);
     };
 
-    this.getAllCurrencies = function () {
-      return this.httpPromise($http.get(config.rate_provider_url), 'Currency set not found');
+    //retrieve all currencies available at rate provider
+    this.getAllCurrencies = function (callback) {
+      return this.httpPromise($http.get(config.rate_provider_url), 'Currency set not found', callback);
     };
 
-    this.getRate = function (sellCurrency) {
-        return this.httpPromise($http.get(config.rate_provider_url+'?base='+sellCurrency), 'Rate not found');
+    //retrieve all rates having a base currency
+    this.getRateSet = function (sellCurrency, callback) {
+        return this.httpPromise($http.get(config.rate_provider_url+'?base='+sellCurrency), 'Rate set not found', callback);
     };
 
-    this.getCurrency = function (id) {
-        return this.httpPromise($http.get(config.currency_url+id), 'Currency not found');
-    };
-
-    this.httpPromise = function (http_object, err) {
+    this.httpPromise = function (http_object, err, callback) {
         return http_object.then(function (response) {
+            if(callback != null){
+                callback();
+            }
             return response.data;
         }, function () {
             alert(err);

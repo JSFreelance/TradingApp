@@ -1,0 +1,37 @@
+<!--Display modal ui for update trade-->
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <p class="modal-title">Updating Trade</p> <b>{{updateData['id']}}</b>
+</div>
+
+<div class="modal-body">
+    <div class="new-trade-label">
+    <label class="sell-currency">Sell Currency</label>
+    <label class="rate">Rate</label>
+    <label>Buy Currency</label>
+    </div>
+
+    <div class="currency-area">
+    <h4>{{updateData['sell_currency']}}</h4>
+
+    <img src="img/arrow-right.png">
+    <label>{{updateData['rate']}}</label>
+    <img src="img/arrow-right.png">
+    <h4>{{updateData['buy_currency']}}</h4>
+    </div>
+
+    <div class="amount-label">
+    <label class="label-margin">Sell Amount</label>
+    <label>Buy Amount</label>
+    </div>
+
+    <div class="amount-text-field">
+    <input type="number" step="0.01" placeholder="Amount" class="form-control text-margin" ng-model="updateData['sell_amount']">
+    <input type="number" step="0.01" class="form-control" ng-model="updateData['buy_amount']" readonly>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-danger" type="button" ng-click="ok()">OK</button>
+</div>
