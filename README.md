@@ -3,8 +3,8 @@
 ###Requirements list
 - [x] REQ1: Build a web app that will allow us Create Retrieve Update and Delete foreign exchange trades. 
 The app will be composed composed in two layers:
-	* Web APP (Angular.js)
-	* REST API  [Django + Django REST Framework](https://github.com/JSFreelance/TradingAPI)
+	* Web APP using Angular.js
+	* [REST API](https://github.com/JSFreelance/TradingAPI) using Django + Django REST Framework
 - [x] REQ2: The main page will retrieve the existing trades, sorted by booking date, and structured as show in picture 1
 - [x] REQ3: The page described in the REQ2, should be paginated and only will display 5 elements per page, using the pagination structure defined in picture 1.
 - [x] REQ4: In the page described in REQ, should have a button that pop ups a dialog which allows the user to enter a new trade, as described in the picture 2. The initial value of the currencies dropdown should be empty, and once the user enters a value in both of them, the frontend app should retieve the latest rate for the selected currency pair and display it.
