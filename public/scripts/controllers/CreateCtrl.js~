@@ -8,7 +8,7 @@ angular.module('TradeApp').controller('CreateCtrl',  ['ApiService', '$scope','$u
     //json to be sent using: Http POST
     $scope.newData = {
         "sell_amount": null,
-        "buy_amount": null,
+        "buy_amount": null,s
         "rate": null,
         "sell_currency": null,
         "buy_currency": null

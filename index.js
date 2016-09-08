@@ -1,8 +1,12 @@
-//Server config and run
 var express = require('express');
-var server = express();
-var port = 5000
-server.use('/', express.static(__dirname + '/public'));
-server.listen(port, function () {
-    console.log('Server running at:5000');
+var app = express();
+
+app.set('port', (process.env.PORT || 5000));
+
+app.use(express.static(__dirname + '/public'));
+
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });
+
