@@ -1,5 +1,5 @@
 //app config
-var routerApp = angular.module('TradeApp', ['ui.router','ui.bootstrap']);
+var routerApp = angular.module('TradeApp', ['ui.router','ui.bootstrap',  'nvd3', 'gridster']);
 
 routerApp.run([
     "$rootScope", "$state", "$stateParams", function ($rootScope, $state, $stateParams) {
@@ -17,9 +17,10 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'views/home.html',
             controller:'HomeCtrl'
         })
-        .state('about', {
-            url: '/about',
-            templateUrl: 'views/about.html'
+        .state('charts', {
+            url: '/charts',
+            templateUrl: 'views/charts.html',
+            controller: 'ChartsCtrl'
         });
     
     $urlRouterProvider.otherwise('/home');
